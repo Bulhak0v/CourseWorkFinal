@@ -38,8 +38,9 @@ namespace CourseWork
             PlaylistService = new PlaylistService(appRepo);
 
             // If the model was not loaded, initialize default data
-            if (_model.Genres.Count == 0 && _model.Studios.Count == 0 && _model.Artists.Count == 0)
+            if (_model == null)
             {
+                _model = new Model.Model();
                 InitializeDefaultData();
             }
 
