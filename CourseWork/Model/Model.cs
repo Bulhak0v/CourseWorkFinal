@@ -8,11 +8,12 @@ namespace CourseWork.Model;
 
 public class Model
 {
-    public BindingList<Movie> Movies { get; set; }
-    public List<Studio> Studios { get; set; }
-    public List<Genre> Genres { get; set; }
-    public List<Artist> Artists { get; set; }
-    public List<Playlist> Playlists { get; set; }
+    public BindingList<Movie> Movies { get; set; } = new BindingList<Movie>();
+    public List<Studio> Studios { get; set; } = new List<Studio>();
+    public List<Genre> Genres { get; set; } = new List<Genre>();
+    public List<Artist> Artists { get; set; } = new List<Artist>();
+    public List<Playlist> Playlists { get; set; } = new List<Playlist>();
+
 
     public Model()
     {
@@ -97,7 +98,7 @@ public class Model
     {
         foreach (var studio in Studios)
         {
-            if(studio.Id == editedStudio.Id)
+            if (studio.Id == editedStudio.Id)
             {
                 studio.Name = editedStudio.Name;
                 studio.Description = editedStudio.Description;
@@ -108,7 +109,7 @@ public class Model
 
     public void UpdateArtist(Artist editedArtist)
     {
-        foreach(var artist in Artists)
+        foreach (var artist in Artists)
         {
             if (artist.Id == editedArtist.Id)
             {
@@ -130,9 +131,9 @@ public class Model
 
     public void AddMovieToPlaylist(Playlist playlistToEdit, Movie movie)
     {
-        foreach(var playlist in Playlists)
+        foreach (var playlist in Playlists)
         {
-            if(playlist.Id == playlistToEdit.Id)
+            if (playlist.Id == playlistToEdit.Id)
             {
                 if (playlist.Movies == null)
                 {

@@ -1,14 +1,6 @@
-﻿using CourseWork.Model;
-using CourseWork.Repo;
+﻿using CourseWork.Repo;
 using CourseWork.Service;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace CourseWork
 {
@@ -19,14 +11,15 @@ namespace CourseWork
 
         private Model.Model _model;
         public MovieService MovieService { get; }
-        public GenreService GenreService { get;}
-        public StudioService StudioService { get;}
+        public GenreService GenreService { get; }
+        public StudioService StudioService { get; }
         public ArtistService ArtistService { get; }
         public PlaylistService PlaylistService { get; }
 
         private ApplicationContext()
         {
             LoadModel();
+
             // Create repo
             IAppRepo appRepo = new InMemoryAppRepo(_model);
 
@@ -38,9 +31,8 @@ namespace CourseWork
             PlaylistService = new PlaylistService(appRepo);
 
             // If the model was not loaded, initialize default data
-            if (_model == null)
+            if (_model.Genres.Count == 0 && _model.Studios.Count == 0 && _model.Artists.Count == 0)
             {
-                _model = new Model.Model();
                 InitializeDefaultData();
             }
 
@@ -85,13 +77,17 @@ namespace CourseWork
                 var jsonData = File.ReadAllText(DataFilePath);
                 _model = JsonSerializer.Deserialize<Model.Model>(jsonData);
             }
+            if (_model == null)
+            {
+                _model = new Model.Model();
+            }
         }
 
         public void SaveModel()
         {
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                var jsonData = JsonSerializer.Serialize(_model, options);
-                File.WriteAllText(DataFilePath, jsonData);
-        } 
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            var jsonData = JsonSerializer.Serialize(_model, options);
+            File.WriteAllText(DataFilePath, jsonData);
+        }
     }
 }
