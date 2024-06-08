@@ -43,7 +43,7 @@
             GenresButton = new Button();
             StudiosButton = new Button();
             label1 = new Label();
-            button1 = new Button();
+            PlaylistsButton = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -177,16 +177,17 @@
             label1.TabIndex = 1;
             label1.Text = "Greetings! Choose the menu from the navbar or here to continue";
             // 
-            // button1
+            // PlaylistsButton
             // 
-            button1.Anchor = AnchorStyles.Top;
-            button1.Location = new Point(255, 414);
-            button1.MinimumSize = new Size(155, 57);
-            button1.Name = "button1";
-            button1.Size = new Size(155, 57);
-            button1.TabIndex = 6;
-            button1.Text = "Playlists";
-            button1.UseVisualStyleBackColor = true;
+            PlaylistsButton.Anchor = AnchorStyles.Top;
+            PlaylistsButton.Location = new Point(255, 414);
+            PlaylistsButton.MinimumSize = new Size(155, 57);
+            PlaylistsButton.Name = "PlaylistsButton";
+            PlaylistsButton.Size = new Size(155, 57);
+            PlaylistsButton.TabIndex = 6;
+            PlaylistsButton.Text = "Playlists";
+            PlaylistsButton.UseVisualStyleBackColor = true;
+            PlaylistsButton.Click += button1_Click;
             // 
             // MainForm
             // 
@@ -194,7 +195,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(677, 500);
-            Controls.Add(button1);
+            Controls.Add(PlaylistsButton);
             Controls.Add(label1);
             Controls.Add(StudiosButton);
             Controls.Add(GenresButton);
@@ -231,6 +232,6 @@
         private Button StudiosButton;
         private Label label1;
         private ToolStripMenuItem playlistToolStripMenuItem;
-        private Button button1;
+        private Button PlaylistsButton;
     }
 }

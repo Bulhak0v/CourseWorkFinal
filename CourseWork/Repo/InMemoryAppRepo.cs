@@ -109,4 +109,9 @@ public class InMemoryAppRepo: IAppRepo
     {
         _model.AddMovieToPlaylist(playlist, movie);
     }
+
+    public void DeleteFromPlaylist(Movie movie, Playlist playlist)
+    {
+        _model.DeleteFromPlaylist(movie, playlist);
+    }
 }

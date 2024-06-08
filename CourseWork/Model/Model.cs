@@ -144,4 +144,22 @@ public class Model
             }
         }
     }
+
+    public void DeleteFromPlaylist(Movie movieToRemove, Playlist playlistFromRemove)
+    {
+        var moviesToRemove = new List<Movie>();
+
+        foreach (var cMovie in playlistFromRemove.Movies)
+        {
+            if (cMovie.Id == movieToRemove.Id)
+            {
+                moviesToRemove.Add(cMovie);
+            }
+        }
+
+        foreach (var movie in moviesToRemove)
+        {
+            playlistFromRemove.Movies.Remove(movie);
+        }
+    }
 }

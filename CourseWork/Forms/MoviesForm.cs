@@ -122,19 +122,25 @@ namespace CourseWork.Forms
 
         private void DeleteMovie_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Are you sure you want to delete this movie?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            if(MoviesGrid.SelectedRows.Count > 0)
             {
-                if (MoviesGrid.SelectedRows.Count > 0)
+                var result = MessageBox.Show("Are you sure you want to delete this movie?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    DataGridViewRow selectedRow = MoviesGrid.SelectedRows[0];
-                    Movie selectedMovie = (Movie)selectedRow.DataBoundItem;
-                    _movieService.DeleteMovie(selectedMovie);
-                    bs.Remove(selectedMovie);
+                    if (MoviesGrid.SelectedRows.Count > 0)
+                    {
+                        DataGridViewRow selectedRow = MoviesGrid.SelectedRows[0];
+                        Movie selectedMovie = (Movie)selectedRow.DataBoundItem;
+                        _movieService.DeleteMovie(selectedMovie);
+                        bs.Remove(selectedMovie);
+                    }
+                    MessageBox.Show("Movie deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show("Movie deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
+            else
+            {
+                MessageBox.Show("Please select a movie to delete.", "No Movie Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void EditMovie_Click(object sender, EventArgs e)

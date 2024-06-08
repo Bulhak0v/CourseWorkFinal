@@ -129,5 +129,13 @@ namespace CourseWork.Forms
             Hide();
             playlistForm.FormClosed += (s, args) => this.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PlaylistsForm playlistForm = new PlaylistsForm();
+            playlistForm.Show();
+            Hide();
+            playlistForm.FormClosed += (s, args) => this.Show();
+        }
     }
 }

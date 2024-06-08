@@ -35,13 +35,14 @@
             label5 = new Label();
             PlaylistTitle = new TextBox();
             label1 = new Label();
+            DeleteMovieButton = new Button();
             ((System.ComponentModel.ISupportInitialize)PlaylistGrid).BeginInit();
             SuspendLayout();
             // 
             // DeletePlaylistButton
             // 
             DeletePlaylistButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            DeletePlaylistButton.Location = new Point(488, 354);
+            DeletePlaylistButton.Location = new Point(351, 354);
             DeletePlaylistButton.Name = "DeletePlaylistButton";
             DeletePlaylistButton.Size = new Size(226, 48);
             DeletePlaylistButton.TabIndex = 37;
@@ -51,7 +52,7 @@
             // 
             // EditPlaylistButton
             // 
-            EditPlaylistButton.Location = new Point(237, 354);
+            EditPlaylistButton.Location = new Point(37, 354);
             EditPlaylistButton.Name = "EditPlaylistButton";
             EditPlaylistButton.Size = new Size(226, 48);
             EditPlaylistButton.TabIndex = 36;
@@ -108,11 +109,23 @@
             label1.TabIndex = 38;
             label1.Text = "Title";
             // 
+            // DeleteMovieButton
+            // 
+            DeleteMovieButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            DeleteMovieButton.Location = new Point(658, 354);
+            DeleteMovieButton.Name = "DeleteMovieButton";
+            DeleteMovieButton.Size = new Size(226, 48);
+            DeleteMovieButton.TabIndex = 40;
+            DeleteMovieButton.Text = "Delete selected movie";
+            DeleteMovieButton.UseVisualStyleBackColor = true;
+            DeleteMovieButton.Click += DeleteMovieButton_Click;
+            // 
             // PlaylistInfoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(922, 425);
+            Controls.Add(DeleteMovieButton);
             Controls.Add(DeletePlaylistButton);
             Controls.Add(EditPlaylistButton);
             Controls.Add(PlaylistGrid);
@@ -136,5 +149,6 @@
         private Label label5;
         private TextBox PlaylistTitle;
         private Label label1;
+        private Button DeleteMovieButton;
     }
 }

@@ -42,6 +42,11 @@ namespace CourseWork.Service
             _appRepo.DeletePlaylist(playlist);
         }
 
+        public void DeleteFromPlaylist(Movie movie, Playlist playlist)
+        {
+            _appRepo.DeleteFromPlaylist(movie, playlist);
+        }
+
         public void AddMovieToPlaylist(Playlist playlist, Movie movie)
         {
             _appRepo.AddMovieToPlaylist(playlist, movie);

@@ -89,5 +89,25 @@ namespace CourseWork.Forms
             base.OnFormClosed(e);
             PlaylistClosed?.Invoke(this, EventArgs.Empty);
         }
+
+        private void DeleteMovieButton_Click(object sender, EventArgs e)
+        {
+            if (PlaylistGrid.SelectedRows.Count > 0)
+            {
+                var result = MessageBox.Show("Are you sure you want to delete this movie?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DataGridViewRow selectedRow = PlaylistGrid.SelectedRows[0];
+                    Movie selectedMovie = (Movie)selectedRow.DataBoundItem;
+                    _playlistService.DeleteFromPlaylist(selectedMovie, _currentPlaylist);
+                    bs.Remove(selectedMovie);
+                    MessageBox.Show("Movie deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a movie to delete.", "No Movie Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

@@ -24,4 +24,5 @@ public interface IAppRepo
     void SavePlaylist(Playlist playlist);
     void DeletePlaylist(Playlist playlist);
     void AddMovieToPlaylist(Playlist playlist, Movie movie);
+    void DeleteFromPlaylist(Movie movie, Playlist playlist);
 }
